@@ -1,7 +1,8 @@
 {
-  "name": "app_conversor",
+  "name": "taxa_cambio",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "JHMR",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
