@@ -16,17 +16,22 @@ export const styles = StyleSheet.create({
         paddingBottom: 24,
     },
     header: {
-        marginBottom: 32,
+        marginBottom: 28,
     },
     title: {
-        fontSize: 32,
+        fontSize: 26,
         fontWeight: "bold",
         color: colors.text,
         marginBottom: 8,
     },
     subtitle: {
         color: colors.textSecondary,
-        fontSize: 16,
+        fontSize: 14,
+    },
+    maded: {
+        fontSize: 10,
+        color: colors.textSecondary,
+        textAlign: "right", 
     },
     card: {
         backgroundColor: colors.cardBackground,
