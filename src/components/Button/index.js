@@ -1,7 +1,13 @@
 import {TouchableOpacity, Text} from "react-native";
-import {styles} from "./styles";
+import {createStyles} from "./styles";
+import {useTheme} from "../../contexts/ThemeContext";
 
 export function Button({variant = "primary", onPress, currency, isSelected}) {
+    // Usando o contexto de tema
+    const { colors } = useTheme();
+    
+    // Criando os estilos com as cores do tema atual
+    const styles = createStyles(colors);
     return (
         <TouchableOpacity
             onPress={onPress}

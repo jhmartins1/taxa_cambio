@@ -1,7 +1,8 @@
 import {StyleSheet} from "react-native";
-import {colors} from "../../styles/colors";
+// Removendo a importação direta das cores, pois usaremos o contexto de tema
 
-export const styles = StyleSheet.create({
+// Criando uma função para gerar estilos com base no tema atual
+export const createStyles = (colors) => StyleSheet.create({
     button: {
         backgroundColor: colors.inputBackground,
         paddingHorizontal: 16,
