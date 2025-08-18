@@ -1,0 +1,79 @@
+import { StyleSheet } from "react-native";
+// Removendo a importação direta das cores, pois usaremos o contexto de tema
+
+// Criando uma função para gerar estilos com base no tema atual
+export const createStyles = (colors) => StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: colors.background
+    },
+    scrollView: {
+        flexGrow: 1,
+    },
+    content: {
+        flex: 1,
+        paddingHorizontal: 24,
+        paddingTop: 80,
+        paddingBottom: 24,
+    },
+    header: {
+        marginBottom: 28,
+    },
+    title: {
+        fontSize: 26,
+        fontWeight: "bold",
+        color: colors.text,
+        marginBottom: 8,
+    },
+    subtitle: {
+        color: colors.textSecondary,
+        fontSize: 14,
+    },
+    maded: {
+        fontSize: 10,
+        color: '#fff',
+        textAlign: "right",
+    },
+    card: {
+        backgroundColor: colors.cardBackground,
+        borderRadius: 16,
+        padding: 24,
+        marginBottom: 24,
+    },
+    label: {
+        color: colors.textSecondary,
+        marginBottom: 8,
+        fontSize: 14,
+    },
+    currencyGrid: {
+        flexDirection: "row",
+        flexWrap: 'wrap',
+        marginHorizontal: -4,
+        marginBottom: 12,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    swapButton: {
+        backgroundColor: colors.inputBackground,
+        paddingVertical: 14,
+        paddingHorizontal: 24,
+        borderRadius: 12,
+        marginBottom: 24,
+    },
+    swapButtonText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: "600",
+    },
+    convertButton: {
+        backgroundColor: colors.primary,
+        paddingVertical: 14,
+        paddingHorizontal: 24,
+        borderRadius: 12,
+        marginBottom: 24,
+    },
+    convertButtonDisabled: {
+        backgroundColor: colors.disabled,
+    }
+})
