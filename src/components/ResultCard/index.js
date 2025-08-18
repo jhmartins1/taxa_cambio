@@ -1,12 +1,18 @@
 import {Text, View} from "react-native";
 import {currencies} from "../../constants/currencies";
-import {styles} from "./styles";
+import {createStyles} from "./styles";
+import {useTheme} from "../../contexts/ThemeContext";
 
 export function ResultCard({exchangeRate,
                                result,
                                fromCurrency,
                                toCurrency,
                                currencies,}) {
+    // Usando o contexto de tema
+    const { colors } = useTheme();
+    
+    // Criando os estilos com as cores do tema atual
+    const styles = createStyles(colors);
     if(!result || !exchangeRate) return null;
 
     const toSymbol = currencies.find(currency => currency.code === toCurrency).symbol
