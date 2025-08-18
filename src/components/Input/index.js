@@ -1,7 +1,13 @@
 import {Text, TextInput, View} from "react-native";
-import {styles} from "./styles";
+import {createStyles} from "./styles";
+import {useTheme} from "../../contexts/ThemeContext";
 
 export function Input({value, onChangeText, label}) {
+    // Usando o contexto de tema
+    const { colors } = useTheme();
+    
+    // Criando os estilos com as cores do tema atual
+    const styles = createStyles(colors);
     return (
         <View style={styles.container}>
             <Text style={styles.label}>
