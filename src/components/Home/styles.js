@@ -1,79 +1,41 @@
-import { StyleSheet } from "react-native";
-// Removendo a importação direta das cores, pois usaremos o contexto de tema
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
-// Criando uma função para gerar estilos com base no tema atual
-export const createStyles = (colors) => StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background
-    },
-    scrollView: {
-        flexGrow: 1,
-    },
-    content: {
-        flex: 1,
-        paddingHorizontal: 24,
-        paddingTop: 80,
-        paddingBottom: 24,
-    },
-    header: {
-        marginBottom: 28,
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: "bold",
-        color: colors.text,
-        marginBottom: 8,
-    },
-    subtitle: {
-        color: colors.textSecondary,
-        fontSize: 14,
-    },
-    maded: {
-        fontSize: 10,
-        color: '#fff',
-        textAlign: "right",
-    },
-    card: {
-        backgroundColor: colors.cardBackground,
-        borderRadius: 16,
-        padding: 24,
-        marginBottom: 24,
-    },
-    label: {
-        color: colors.textSecondary,
-        marginBottom: 8,
-        fontSize: 14,
-    },
-    currencyGrid: {
-        flexDirection: "row",
-        flexWrap: 'wrap',
-        marginHorizontal: -4,
-        marginBottom: 12,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    swapButton: {
-        backgroundColor: colors.inputBackground,
-        paddingVertical: 14,
-        paddingHorizontal: 24,
-        borderRadius: 12,
-        marginBottom: 24,
-    },
-    swapButtonText: {
-        color: '#fff',
-        textAlign: 'center',
-        fontSize: 20,
-        fontWeight: "600",
-    },
-    convertButton: {
-        backgroundColor: colors.primary,
-        paddingVertical: 14,
-        paddingHorizontal: 24,
-        borderRadius: 12,
-        marginBottom: 24,
-    },
-    convertButtonDisabled: {
-        backgroundColor: colors.disabled,
-    }
-})
+export const createStyles = colors => StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.background, paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
+    flex: { flex: 1 },
+    scrollContent: { flexGrow: 1, alignItems: 'center' },
+    content: { width: '100%', maxWidth: 520, flexGrow: 1, paddingHorizontal: 24, paddingTop: 24, paddingBottom: Platform.OS === 'android' ? 32 : 16 },
+    header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    brand: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+    brandIcon: { width: 38, height: 38, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.primary },
+    wordmark: { color: colors.text, fontSize: 26, fontWeight: '700', letterSpacing: -1 },
+    themeButton: { width: 44, height: 44, borderRadius: 22, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+    hero: { marginTop: 38, marginBottom: 28 },
+    eyebrowRow: { flexDirection: 'row', alignItems: 'center', gap: 7, marginBottom: 16 },
+    dot: { width: 5, height: 5, borderRadius: 3, backgroundColor: colors.primary },
+    eyebrow: { color: colors.textSecondary, fontSize: 9, fontWeight: '600', letterSpacing: 1.25, flexShrink: 1 },
+    title: { color: colors.text, fontSize: 38, lineHeight: 44, fontWeight: '600', letterSpacing: -1.6 },
+    titleAccent: { color: colors.primary },
+    subtitle: { color: colors.textSecondary, fontSize: 13, lineHeight: 20, marginTop: 12 },
+    card: { backgroundColor: colors.cardBackground, borderRadius: 26, borderWidth: 1, borderColor: colors.border, padding: 22 },
+    fieldHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 },
+    label: { color: colors.textSecondary, fontSize: 13, flexShrink: 1 },
+    currencyName: { fontSize: 12, color: colors.muted, marginTop: 3 },
+    dividerRow: { flexDirection: 'row', gap: 12, alignItems: 'center', marginVertical: 18 },
+    divider: { flex: 1, height: 1, backgroundColor: colors.border },
+    swapButton: { width: 44, height: 44, borderRadius: 16, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.inputBackground, alignItems: 'center', justifyContent: 'center' },
+    convertButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 11, minHeight: 56, paddingHorizontal: 18, paddingVertical: 15, borderRadius: 16, backgroundColor: colors.primary, marginTop: 26 },
+    convertButtonDisabled: { opacity: 0.45 },
+    convertButtonText: { flex: 1, textAlign: 'center', color: colors.onPrimary, fontSize: 15, fontWeight: '700' },
+    validation: { color: colors.error, fontSize: 12, marginTop: 18 },
+    error: { flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 12, padding: 12, backgroundColor: colors.errorBackground, marginTop: 18 },
+    errorText: { flex: 1, color: colors.error, fontSize: 12, lineHeight: 18 },
+    rateInfo: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 3, marginTop: 22, marginBottom: 28 },
+    infoIcon: { width: 36, height: 36, borderRadius: 18, backgroundColor: colors.accentSoft, alignItems: 'center', justifyContent: 'center' },
+    infoContent: { flex: 1, gap: 5 },
+    infoTitle: { color: colors.text, fontSize: 12, fontWeight: '500', lineHeight: 18 },
+    infoText: { color: colors.muted, fontSize: 11, lineHeight: 16 },
+    footer: { marginTop: 'auto', paddingTop: 8 },
+    disclaimer: { color: colors.muted, fontSize: 10, textAlign: 'center', lineHeight: 16 },
+    footerLine: { backgroundColor: colors.border, height: 1, marginTop: 20, marginBottom: 8 },
+});

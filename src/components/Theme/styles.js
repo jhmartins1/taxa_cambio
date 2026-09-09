@@ -1,84 +1,31 @@
-import { StyleSheet } from "react-native";
-// Removendo a importação direta das cores, pois usaremos o contexto de tema
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 
-// Criando uma função para gerar estilos com base no tema atual
-export const createStyles = (colors) => StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: colors.background
-    },
-    scrollView: {
-        flexGrow: 1,
-    },
-    content: {
-        flex: 1,
-        paddingHorizontal: 24,
-        paddingTop: 80,
-        paddingBottom: 24,
-    },
-    header: {
-        marginBottom: 28,
-    },
-    title: {
-        fontSize: 26,
-        fontWeight: "bold",
-        color: colors.text,
-        marginBottom: 8,
-    },
-    maded: {
-        fontSize: 10,
-        color: colors.text,
-        textAlign: "right",
-    },
-    card: {
-        backgroundColor: colors.cardBackground,
-        borderRadius: 16,
-        padding: 24,
-        marginBottom: 24,
-    },
-    themeLabel: {
-        fontSize: 16,
-        fontWeight: "500",
-        color: colors.text,
-        marginBottom: 16,
-    },
-    themeGrid: {
-        flexDirection: "row",
-        flexWrap: 'wrap',
-        marginHorizontal: -4,
-        marginBottom: 20,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    themeButton: {
-        paddingHorizontal: 16,
-        paddingVertical: 12,
-        margin: 8,
-        borderRadius: 8,
-        borderWidth: 2,
-        borderColor: 'transparent',
-        minWidth: 100,
-        alignItems: 'center',
-    },
-    themeButtonSelected: {
-        borderColor: colors.primary,
-    },
-    themeButtonText: {
-        color: '#ffffff',
-        fontWeight: '500',
-        fontSize: 14,
-    },
-    themeButtonTextSelected: {
-        fontWeight: 'bold',
-    },
-    themeDescription: {
-        color: colors.textSecondary,
-        fontSize: 14,
-        textAlign: 'center',
-        marginTop: 8,
-    },
-    themeHighlight: {
-        color: colors.primary,
-        fontWeight: 'bold',
-    },
-})
+export const createStyles = colors => StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.background, paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
+    scrollContent: { flexGrow: 1, alignItems: 'center' },
+    content: { width: '100%', maxWidth: 520, flexGrow: 1, padding: 24, paddingBottom: 32 },
+    navigation: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+    backButton: { height: 44, width: 44, borderRadius: 22, borderWidth: 1, borderColor: colors.border, alignItems: 'center', justifyContent: 'center' },
+    navigationTitle: { color: colors.textSecondary, fontSize: 10, letterSpacing: 2, fontWeight: '600' },
+    navigationSpacer: { width: 44 },
+    header: { marginTop: 38, marginBottom: 28 },
+    title: { color: colors.text, fontSize: 36, fontWeight: '600', letterSpacing: -1.5 },
+    subtitle: { color: colors.textSecondary, fontSize: 13, lineHeight: 20, marginTop: 12 },
+    themeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 14 },
+    themeOption: { width: '47%', flexGrow: 1, padding: 10, backgroundColor: colors.cardBackground, borderWidth: 1, borderColor: colors.border, borderRadius: 20 },
+    preview: { height: 150, borderRadius: 12, padding: 14, overflow: 'hidden' },
+    previewHeader: { flexDirection: 'row', alignItems: 'center', gap: 5, marginBottom: 12 },
+    previewLogo: { width: 14, height: 14, borderRadius: 5 },
+    previewLine: { height: 4, width: 30, borderRadius: 2 },
+    previewCard: { borderRadius: 9, borderWidth: 1, padding: 10 },
+    previewValue: { height: 8, width: '55%', borderRadius: 3, marginTop: 9 },
+    previewRule: { height: 1, marginTop: 10 },
+    previewCta: { height: 14, borderRadius: 4, marginTop: 12 },
+    optionHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 5, marginTop: 14, paddingHorizontal: 3 },
+    themeName: { color: colors.text, fontSize: 15, fontWeight: '600' },
+    radio: { width: 19, height: 19, borderRadius: 10, borderWidth: 1, borderColor: colors.muted, alignItems: 'center', justifyContent: 'center' },
+    description: { color: colors.textSecondary, fontSize: 11, lineHeight: 16, paddingHorizontal: 3, marginTop: 7, marginBottom: 5 },
+    savedNote: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 24 },
+    savedText: { color: colors.muted, fontSize: 11, lineHeight: 17, flexShrink: 1 },
+    footer: { marginTop: 'auto', paddingTop: 32 },
+});

@@ -1,26 +1,7 @@
-import {StyleSheet} from 'react-native';
-// Removendo a importação direta das cores, pois usaremos o contexto de tema
+import { StyleSheet } from 'react-native';
 
-// Criando uma função para gerar estilos com base no tema atual
-export const createStyles = (colors) => StyleSheet.create({
-    container: {
-        backgroundColor: colors.cardBackground,
-        borderRadius: 16,
-        padding: 24,
-    },
-    label: {
-        color: colors.textSecondary,
-        marginBottom: 8,
-        fontSize: 18,
-    },
-    amount: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: colors.text,
-        marginBottom: 14,
-    },
-    rate: {
-        color: colors.textSecondary,
-        fontSize: 14,
-    }
-})
+export const createStyles = colors => StyleSheet.create({
+    container: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 18, minHeight: 59 },
+    symbol: { fontSize: 27, color: colors.textSecondary },
+    amount: { flex: 1, fontSize: 44, fontWeight: '500', letterSpacing: -1.5, color: colors.primary, fontVariant: ['tabular-nums'] },
+});

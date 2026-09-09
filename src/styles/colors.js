@@ -1,46 +1,32 @@
-// Temas disponíveis na aplicação
 export const themes = {
     dark: {
-        primary: '#2563eb',
-        secondary: '#16a34a',
-        background: '#0f172a',
-        cardBackground: '#1e293b',
-        inputBackground: '#334155',
-        text: '#ffffff',
-        textSecondary: '#94a3b8',
-        disabled: '#334155'
+        primary: '#C5F277', onPrimary: '#1D2A10', secondary: '#C5F277',
+        background: '#111411', cardBackground: '#1B201B', inputBackground: '#262D25',
+        text: '#F3F4ED', textSecondary: '#A4AEA0', muted: '#7F8B7B',
+        border: '#343D31', accentSoft: '#29361F', disabled: '#353E30',
+        error: '#FFB4AB', errorBackground: '#382422',
     },
     light: {
-        primary: '#3b82f6',
-        secondary: '#22c55e',
-        background: '#f8fafc',
-        cardBackground: '#ffffff',
-        inputBackground: '#e2e8f0',
-        text: '#0f172a',
-        textSecondary: '#64748b',
-        disabled: '#cbd5e1'
+        primary: '#365C24', onPrimary: '#FFFFFF', secondary: '#365C24',
+        background: '#F4F5EF', cardBackground: '#FFFFFF', inputBackground: '#EFF2E9',
+        text: '#20291C', textSecondary: '#5C6855', muted: '#6E7968',
+        border: '#D8DECE', accentSoft: '#E6EEDC', disabled: '#D8DECE',
+        error: '#AD352B', errorBackground: '#FDEBE8',
     },
     blue: {
-        primary: '#0ea5e9',
-        secondary: '#06b6d4',
-        background: '#0c4a6e',
-        cardBackground: '#075985',
-        inputBackground: '#0369a1',
-        text: '#ffffff',
-        textSecondary: '#bae6fd',
-        disabled: '#0284c7'
+        primary: '#A9CEFF', onPrimary: '#142B46', secondary: '#A9CEFF',
+        background: '#101820', cardBackground: '#192530', inputBackground: '#243442',
+        text: '#EDF3FA', textSecondary: '#A0B3C5', muted: '#829AAE',
+        border: '#334857', accentSoft: '#223A50', disabled: '#334857',
+        error: '#FFB4AB', errorBackground: '#382422',
     },
     green: {
-        primary: '#16a34a',
-        secondary: '#2563eb',
-        background: '#14532d',
-        cardBackground: '#166534',
-        inputBackground: '#15803d',
-        text: '#ffffff',
-        textSecondary: '#bbf7d0',
-        disabled: '#22c55e'
-    }
+        primary: '#95E2BA', onPrimary: '#103626', secondary: '#95E2BA',
+        background: '#101C18', cardBackground: '#192B24', inputBackground: '#243B30',
+        text: '#EEF6EF', textSecondary: '#A0B9AC', muted: '#82A392',
+        border: '#345143', accentSoft: '#244334', disabled: '#345143',
+        error: '#FFB4AB', errorBackground: '#382422',
+    },
 };
 
-// Tema padrão (dark)
 export const colors = themes.dark;
