@@ -3,15 +3,17 @@ import { KeyboardAvoidingView, Modal, Platform, Pressable, SafeAreaView, ScrollV
 import Feather from '@expo/vector-icons/Feather';
 import { currencies } from '../../constants/currencies';
 import { useTheme } from '../../contexts/ThemeContext';
+import { FavoriteButton } from '../FavoriteButton';
+import { favoriteFirst } from '../../utils/favorites';
 
-export function CurrencyPicker({ value, onChange, label, disabled }) {
+export function CurrencyPicker({ value, onChange, label, disabled, favorites = [], onToggleFavorite, favoritesReady }) {
     const { colors } = useTheme();
     const [visible, setVisible] = useState(false);
     const [search, setSearch] = useState('');
     const styles = createStyles(colors);
     const selected = currencies.find(currency => currency.code === value);
     const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    const options = currencies.filter(currency => normalize(`${currency.code} ${currency.name}`).includes(normalize(search.trim())));
+    const options = favoriteFirst(currencies, favorites).filter(currency => normalize(`${currency.code} ${currency.name}`).includes(normalize(search.trim())));
     return (
         <>
             <TouchableOpacity
@@ -40,13 +42,17 @@ export function CurrencyPicker({ value, onChange, label, disabled }) {
                                 <Feather name="search" size={18} color={colors.textSecondary} />
                                 <TextInput style={styles.searchInput} accessibilityLabel="Buscar moeda" placeholder="Buscar nome ou código" placeholderTextColor={colors.muted} value={search} onChangeText={setSearch} autoCorrect={false} />
                             </View>
+                            <Text style={styles.hint}>Marque com a estrela. Suas favoritas aparecem primeiro.</Text>
                             <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={styles.options}>
                                 {options.map(currency => (
-                                    <TouchableOpacity key={currency.code} style={[styles.option, value === currency.code && { backgroundColor: colors.accentSoft }]} accessibilityRole="button" accessibilityState={{ selected: value === currency.code }} onPress={() => { onChange(currency.code); setVisible(false); }}>
-                                        <View style={styles.optionIcon}><Text style={styles.symbol}>{currency.symbol}</Text></View>
-                                        <View style={styles.optionName}><Text style={styles.code}>{currency.code}</Text><Text style={styles.name}>{currency.name}</Text></View>
-                                        {value === currency.code && <Feather name="check" size={20} color={colors.primary} />}
-                                    </TouchableOpacity>
+                                    <View key={currency.code} style={[styles.option, value === currency.code && { backgroundColor: colors.accentSoft }]}>
+                                        <TouchableOpacity style={styles.selectOption} accessibilityRole="button" accessibilityLabel={`${currency.code} ${currency.name}`} accessibilityState={{ selected: value === currency.code }} onPress={() => { onChange(currency.code); setVisible(false); }}>
+                                            <View style={styles.optionIcon}><Text style={styles.symbol}>{currency.symbol}</Text></View>
+                                            <View style={styles.optionName}><Text style={styles.code}>{currency.code}</Text><Text style={styles.name}>{currency.name}</Text></View>
+                                            {value === currency.code && <Feather name="check" size={16} color={colors.primary} />}
+                                        </TouchableOpacity>
+                                        <FavoriteButton code={currency.code} selected={favorites.includes(currency.code)} disabled={!favoritesReady} onPress={() => onToggleFavorite(currency.code)} />
+                                    </View>
                                 ))}
                                 {!options.length && <Text style={styles.empty}>Nenhuma moeda encontrada.</Text>}
                             </ScrollView>
@@ -73,7 +79,9 @@ const createStyles = colors => StyleSheet.create({
     search: { flexDirection: 'row', gap: 12, alignItems: 'center', backgroundColor: colors.inputBackground, borderWidth: 1, borderColor: colors.border, borderRadius: 14, paddingHorizontal: 15, marginBottom: 16 },
     searchInput: { flex: 1, minHeight: 48, color: colors.text, fontSize: 15, ...Platform.select({ web: { outlineStyle: 'none' } }) },
     options: { gap: 4 },
-    option: { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 12, borderRadius: 14 },
+    hint: { color: colors.muted, fontSize: 11, lineHeight: 16, marginBottom: 12 },
+    option: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingHorizontal: 8, borderRadius: 14 },
+    selectOption: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12 },
     optionIcon: { height: 40, width: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20, backgroundColor: colors.inputBackground },
     optionName: { flex: 1, gap: 3 },
     name: { fontSize: 12, color: colors.textSecondary },
