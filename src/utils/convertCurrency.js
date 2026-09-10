@@ -1,7 +1,6 @@
 export function parseCurrencyAmount(amount) {
     if (typeof amount === 'number') return Number.isFinite(amount) && amount >= 0 ? amount : NaN;
     const input = String(amount).trim();
-    // Accept decimal points and Brazilian decimals/grouping without silently truncating input.
     if (!/^(?:\d+(?:\.\d*)?|\d+,\d*|\d{1,3}(?:\.\d{3})+,\d*)$/.test(input)) return NaN;
     const normalized = input.includes(',') ? input.replace(/\./g, '').replace(',', '.') : input;
     const value = Number(normalized);
