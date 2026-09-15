@@ -121,7 +121,7 @@ export default function Home({ onOpenThemes }) {
                         <View style={styles.header}>
                             <View style={styles.brand}>
                                 <View style={styles.brandIcon}><Feather name="repeat" size={22} color={colors.onPrimary} /></View>
-                                <Text style={styles.wordmark}>câmbio<Text style={{ color: colors.primary }}>.</Text></Text>
+                                <Text style={styles.wordmark}>Cotei</Text>
                             </View>
                             <View style={{ flexDirection: 'row', gap: 8 }}><TouchableOpacity style={styles.themeButton} onPress={() => { Keyboard.dismiss(); setShowHistory(true); history.refresh(); }} accessibilityRole="button" accessibilityLabel="Abrir histórico"><Feather name="clock" size={19} color={colors.text} /></TouchableOpacity>
                             <TouchableOpacity style={styles.themeButton} onPress={onOpenThemes} accessibilityRole="button" accessibilityLabel="Personalizar aparência" activeOpacity={0.7}>
