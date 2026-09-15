@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "app_conversor",
+    "name": "Cotei",
     "slug": "app_conversor",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,10 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jhmartins1.cotei"
     },
     "android": {
-      "package": "com.jhmartins1.cambiosor",
+      "package": "com.jhmartins1.cotei",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
