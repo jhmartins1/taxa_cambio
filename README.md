@@ -1,6 +1,6 @@
 <div align="center">
 
-# câmbio.
+# Cotei
 
 ### Seu dinheiro, sem fronteiras.
 
@@ -17,7 +17,7 @@ Feito com React Native e Expo para Android, iOS e web.
 
 ## Sobre o projeto
 
-O **câmbio.** facilita a conversão de valores para quem está planejando uma viagem, comparando preços ou acompanhando moedas estrangeiras. A proposta é reunir as ferramentas do dia a dia em uma interface simples: fazer a conta, converter, comparar e consultar depois.
+O **Cotei** facilita a conversão de valores para quem está planejando uma viagem, comparando preços ou acompanhando moedas estrangeiras. A proposta é reunir as ferramentas do dia a dia em uma interface simples: fazer a conta, converter, comparar e consultar depois.
 
 O visual combina cartões arredondados, valores em destaque e quatro temas. As preferências, o histórico e as últimas cotações ficam salvos no próprio dispositivo.
 
